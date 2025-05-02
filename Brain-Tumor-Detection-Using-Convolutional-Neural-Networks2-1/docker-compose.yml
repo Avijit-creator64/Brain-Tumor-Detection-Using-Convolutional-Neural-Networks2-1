@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  brain_tumor_app:
+    build: .
+    container_name: brain_tumor_detection
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./model.h5:/app/model.h5
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./reports:/app/reports
+    env_file:
+      - .env
+    restart: unless-stopped
